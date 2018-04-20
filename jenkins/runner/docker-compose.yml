@@ -1,0 +1,50 @@
+version: '3'
+services:
+  # Jenkins master
+  jenkins:
+    image: manoharanrajesh/jenkinsmaster:simple
+    container_name: jenkins
+    hostname: jenkins
+    network_mode: bridge
+    ports:
+     - "8080:8080"
+     - "50000:50000"
+    volumes:
+      - jenkinsdata:/var/jenkins_home_jenkins
+  master:
+      image: manoharanrajesh/jenkinsmaster:simple
+      container_name: master
+      hostname: master
+      network_mode: bridge
+      ports:
+       - "8081:8080"
+       - "50001:50000"
+      volumes:
+        - jenkinsdata:/var/jenkins_home_master
+  # Jenkins Slave
+  slave:
+    image: manoharanrajesh/jenkins-swarm-slave:simple
+    network_mode: bridge
+    links:
+      - jenkins:jenkins
+    environment:
+      - JENKINS_RETRY=10
+      - USER_NAME=jenkins
+      - PASSWORD=jenkins
+      - EXECUTORS=4
+  slave1:
+      image: manoharanrajesh/jenkins-swarm-slave:simple
+      network_mode: bridge
+      links:
+        - master:jenkins
+      environment:
+        - JENKINS_RETRY=10
+        - USER_NAME=jenkins
+        - PASSWORD=jenkins
+        - EXECUTORS=4
+volumes:
+  jenkinsdata:
+    external: false
+  jenkinslogs:
+    external: false
+

@@ -9,6 +9,11 @@ Can be used with Docker slaves from [`manoharanrajesh/jenkins-slave`](https://hu
 
     docker run --name jenkins -p 8080:8080 -p 50000:50000 -v /var/jenkins_home manoharanrajesh/jenkinsmaster:simple
 
+##### OR USE [DOCKER_COMPOSE](../runner/README.md)
+
 # Building
 
     docker build -t manoharanrajesh/jenkinsmaster:simple .
+    
+# Note: 
+ 
