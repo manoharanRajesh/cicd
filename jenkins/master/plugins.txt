@@ -115,3 +115,4 @@ workflow-step-api:latest
 workflow-support:latest
 ws-cleanup:latest
 saferestart:latest
+cloudfoundry:latest
