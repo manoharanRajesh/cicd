@@ -7,7 +7,7 @@ services:
     hostname: jenkins
     network_mode: bridge
     ports:
-     - "8080:8080"
+     - "8082:8080"
      - "50000:50000"
     volumes:
       - jenkinsdata:/var/jenkins_home_jenkins
