@@ -32,6 +32,16 @@ services:
       - USER_NAME=jenkins
       - PASSWORD=jenkins
       - EXECUTORS=4
+  slave2:
+      image: manoharanrajesh/jenkins-swarm-slave:simple-node
+      network_mode: bridge
+      links:
+        - jenkins:jenkins
+      environment:
+        - JENKINS_RETRY=10
+        - USER_NAME=jenkins
+        - PASSWORD=jenkins
+        - EXECUTORS=4
   slave1:
       image: manoharanrajesh/jenkins-swarm-slave:simple
       network_mode: bridge
