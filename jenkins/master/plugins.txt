@@ -116,3 +116,5 @@ workflow-support:latest
 ws-cleanup:latest
 saferestart:latest
 cloudfoundry:latest
+swarm:3.12
+
