@@ -57,3 +57,5 @@ environment.dumpEnvVars()
 ## Other References 
 * [tutorial](https://github.com/jenkinsci/pipeline-plugin/blob/master/TUTORIAL.md#manual-loading)
 * [workflow-remote-loader-plugin](https://github.com/jenkinsci/workflow-remote-loader-plugin)
+* [pipeline-examples](https://github.com/jenkinsci/pipeline-examples)
+* [other-Lib](https://github.com/carloscaverobarca/pipeline-examples/tree/master/pipeline-examples)

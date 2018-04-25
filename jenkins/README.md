@@ -5,3 +5,4 @@
 * [Runner](./runner/README.md)
 * [Groovy Script loading](./lib/README.md)
 * [Sonar](./sonar/README.md)
+* [Doker pipeline sample](./docker-selenium/README.md)
