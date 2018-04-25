@@ -2,13 +2,49 @@ FROM jpetazzo/dind
 
 MAINTAINER manoharan rajesh
 
-ENV NODEJS_VERSION=v9.9.0 YARN_VERSION=1.5.1
+# build parameters
+ARG JAVA_DISTRIBUTION=jdk
+ARG JAVA_MAJOR_VERSION=8
+ARG JAVA_UPDATE_VERSION=171
+ARG JAVA_BUILD_NUMBER=11
+ARG JAVA_HASH=512cd62ec5174c3487ac17c61aaa89e8
+ARG BUILD_DATE=undefined
+
+ENV JAVA_VERSION=1.${JAVA_MAJOR_VERSION}.0_${JAVA_UPDATE_VERSION}
+ENV JAVA_HOME=/opt/java/${JAVA_DISTRIBUTION}${JAVA_VERSION}
+ENV PATH=$PATH:$JAVA_HOME/bin
+
+# install java
+RUN apt-get update && \
+    apt-get -y install wget && \
+    export JAVA_TARBALL=${JAVA_DISTRIBUTION}-${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-linux-x64.tar.gz && \
+    if  [ -n "${JAVA_HASH}" ]; \
+      then JAVA_HASH_EXTENTION='/'$JAVA_HASH'/' ; \
+      else JAVA_HASH_EXTENTION= ; \
+    fi && \
+    wget --directory-prefix=/tmp \
+         --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" \
+         http://download.oracle.com/otn-pub/java/jdk/${JAVA_MAJOR_VERSION}u${JAVA_UPDATE_VERSION}-b${JAVA_BUILD_NUMBER}${JAVA_HASH_EXTENTION}/${JAVA_TARBALL} && \
+    mkdir -p /opt/java && \
+    tar -xzf /tmp/${JAVA_TARBALL} -C /opt/java/ && \
+    if  [ "${JAVA_DISTRIBUTION}" = "server-jre" ]; \
+      then mv /opt/java/jdk${JAVA_VERSION} ${JAVA_HOME} ; \
+    fi && \
+    ln -s ${JAVA_HOME}/bin/java /usr/bin/java && \
+    apt-get -y autoremove  \
+          wget && \
+    apt-get autoclean && \
+    rm -rf /tmp/* && rm -rf /var/log/*
 
 
 # install netstat to allow connection health check with
 # netstat -tan | grep ESTABLISHED
 RUN apt-get update && apt-get install -y net-tools git subversion python python-dev python-pip tar ssh curl bzip2 unzip xz-utils iptables \
      && rm -rf /var/lib/apt/lists/*
+
+ENV NODEJS_VERSION=v9.9.0 YARN_VERSION=1.5.1
+
+
 
 RUN curl -SLO "https://nodejs.org/dist/$NODEJS_VERSION/node-$NODEJS_VERSION-linux-x64.tar.xz" \
     && tar -Jxvf "node-$NODEJS_VERSION-linux-x64.tar.xz" -C /usr/local --strip-components=1 --no-same-owner \
