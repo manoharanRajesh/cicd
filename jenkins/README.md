@@ -4,4 +4,4 @@
 * [Slave Image](./slave/README.md)
 * [Runner](./runner/README.md)
 * [Groovy Script loading](./lib/README.md)
-* [SONAR](./sonar/README.md)
+* [Sonar](./sonar/README.md)
