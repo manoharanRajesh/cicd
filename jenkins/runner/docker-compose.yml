@@ -33,7 +33,7 @@ services:
       - PASSWORD=jenkins
       - EXECUTORS=4
   slave2:
-      image: manoharanrajesh/jenkins-swarm-slave:simple-docker
+      image: manoharanrajesh/jenkins-swarm-slave:simple-node
       network_mode: bridge
       links:
         - jenkins:jenkins
