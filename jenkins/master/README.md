@@ -15,4 +15,5 @@ Can be used with Docker slaves from [`manoharanrajesh/jenkins-slave`](https://hu
 
     docker build -t manoharanrajesh/jenkinsmaster:simple .
     
- 
+# Other Example
+[jenkins-init](https://github.com/redfive/jenkins-init)
