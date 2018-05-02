@@ -17,3 +17,4 @@ Can be used with Docker slaves from [`manoharanrajesh/jenkins-slave`](https://hu
     
 # Other Example
 [jenkins-init](https://github.com/redfive/jenkins-init)
+[jenkins2](https://wilsonmar.github.io/jenkins2-pipeline/)
