@@ -1,0 +1,55 @@
+version: '3'
+services:
+  # Jenkins master
+  jenkins:
+    image: manoharanrajesh/jenkinsmaster:simple
+    container_name: jenkins
+    hostname: jenkins
+    network_mode: bridge
+    ports:
+     - "8082:8080"
+     - "50000:50000"
+    volumes:
+      - jenkinsdata:/var/jenkins_home_jenkins
+  slave:
+    image: manoharanrajesh/jenkins-swarm-slave:simple
+    network_mode: bridge
+    links:
+      - jenkins:jenkins
+    environment:
+      - JENKINS_RETRY=10
+      - USER_NAME=jenkins
+      - PASSWORD=jenkins
+      - EXECUTORS=4
+  slave2:
+      image: manoharanrajesh/jenkins-swarm-slave:simple-node
+      network_mode: bridge
+      links:
+        - jenkins:jenkins
+      environment:
+        - JENKINS_RETRY=10
+        - USER_NAME=jenkins
+        - PASSWORD=jenkins
+        - EXECUTORS=4
+  selenium-hub:
+      image: selenium/hub:3.12.0-americium
+      container_name: selenium-hub
+      ports:
+        - "4444:4444"
+  chrome:
+      image: selenium/node-chrome:3.12.0-americium
+      depends_on:
+        - selenium-hub
+      environment:
+        - HUB_HOST=selenium-hub
+        - HUB_PORT=4444
+  firefox:
+      image: selenium/node-firefox:3.12.0-americium
+      depends_on:
+        - selenium-hub
+      environment:
+        - HUB_HOST=selenium-hub
+        - HUB_PORT=4444
+volumes:
+  jenkinsdata:
+  jenkinslogs:

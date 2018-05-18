@@ -18,4 +18,4 @@ This pipeline executes Selenium tests against Chrome and Firefox, all running in
 
 # External resources
 - [Selenium example](https://github.com/manoharanRajesh/simple-selenium-grid)
-
+- [docker-selenium](https://github.com/SeleniumHQ/docker-selenium)

@@ -2,5 +2,6 @@ ace-editor:latest
 ant:latest
 saferestart:latest
 cloudfoundry:latest
+workflow-remote-loader:latest
 swarm:3.12
 
