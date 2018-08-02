@@ -11,4 +11,6 @@
 * [Docker-Agent](./vsts/docker/README.md)
 
 
+## Running it in the Azure Vm:
 
+wget -O - https://raw.githubusercontent.com/manoharanRajesh/cicd/dev/init.sh | sudo bash 
