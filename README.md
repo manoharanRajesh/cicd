@@ -14,9 +14,12 @@
 # To create VM in azure
 1. Create Account and login to [AZURE-PORTAL](https://portal.azure.com)
 2. Create VM by Clicking Deploy to azure button.
+
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fdocker-simple-on-ubuntu%2Fazuredeploy.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
+
+
     1. Enter the Following
         1. Create new resource Group : <enter resource group name of your choose>
         2. Admin user name , password & Dns name of your choose.
