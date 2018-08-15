@@ -2,7 +2,7 @@ version: '3'
 services:
   # Jenkins master
   jenkins:
-    image: manoharanrajesh/jenkinsmaster:simple
+    image: manoharanrajesh/jenkinsmaster:simple2
     container_name: jenkins
     hostname: jenkins
     network_mode: bridge
@@ -12,7 +12,7 @@ services:
     volumes:
       - jenkinsdata:/var/jenkins_home_jenkins
   master:
-      image: manoharanrajesh/jenkinsmaster:simple
+      image: manoharanrajesh/jenkinsmaster:simple2
       container_name: master
       hostname: master
       network_mode: bridge
