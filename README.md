@@ -46,8 +46,10 @@ This template allows you to deploy an Ubuntu VM with Docker (using the Docker Ex
 You can run `docker` commands by connecting to the virtual machine with SSH.
 
 Restart the Slave
-wget -O - https://raw.githubusercontent.com/manoharanRajesh/cicd/dev/restart-8081.sh | sudo bash
-wget -O - https://raw.githubusercontent.com/manoharanRajesh/cicd/dev/restart-8082.sh | sudo bash
+
+```wget -O - https://raw.githubusercontent.com/manoharanRajesh/cicd/dev/restart-8081.sh | sudo bash```
+
+```wget -O - https://raw.githubusercontent.com/manoharanRajesh/cicd/dev/restart-8082.sh | sudo bash```
 
 
 
